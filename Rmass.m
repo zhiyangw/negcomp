@@ -1,7 +1,7 @@
 function [ R,Rnormed ] = Rmass( xn,xn1,prop ,block1Ind,block2Ind)
 
 [PRES,ENTH,TEMP,SAT_W,SAT_S,RHO_W,RHO_S,RHO,H_W,H_S,VISC_W,VISC_S,KR_W,KR_S,NVAR] = offset();
-
+% Calculate fluid properties for previous time step and current timestep
 [pvars_1n] = fluidProperties(xn(block1Ind),xn(block1Ind+prop.NB),prop);
 [pvars_2n] = fluidProperties(xn(block2Ind),xn(block2Ind+prop.NB),prop);
 [pvars_1n1]= fluidProperties(xn1(block1Ind),xn1(block1Ind+prop.NB),prop);

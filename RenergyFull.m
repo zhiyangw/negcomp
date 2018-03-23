@@ -24,18 +24,18 @@ for i = 1:size(prop.wellList,2)
         [pvars] = fluidProperties(xn(well.blockNum),xn(well.blockNum+prop.NB),prop);
         [pvarsk] = fluidProperties(xk1(well.blockNum),xk1(well.blockNum+prop.NB),prop);
         [pvarsn1] = fluidProperties(xn1(well.blockNum),xn1(well.blockNum+prop.NB),prop);
-        if (well.BHP-pvarsn1(PRES))>0
+%         if (well.BHP-pvarsn1(PRES))>0
             % Make R = Rnormed easier for linear solver
             R(well.blockNum) = R(well.blockNum) - well.Hinj*well.T*(prop.dt/prop.V(well.blockNum))*(well.BHP-pvarsn1(PRES))...
                 /((pvars(RHO)*pvars(ENTH)));
             Rnormed(well.blockNum) = Rnormed(well.blockNum) - well.Hinj*well.T*(prop.dt/prop.V(well.blockNum))*(well.BHP-pvarsn1(PRES))...
                 /((pvars(RHO)*pvars(ENTH)));
-        else
-            R(well.blockNum) = R(well.blockNum) - pvarsn1(ENTH)*well.T*(prop.dt/prop.V(well.blockNum))*(well.BHP-pvarsn1(PRES))...
-                /((pvars(RHO)*pvars(ENTH)));
-            Rnormed(well.blockNum) = Rnormed(well.blockNum) - well.Hinj*well.T*(prop.dt/prop.V(well.blockNum))*(well.BHP-pvarsn1(PRES))...
-                /((pvars(RHO)*pvars(ENTH)));
-        end
+%         else
+%             R(well.blockNum) = R(well.blockNum) - pvarsn1(ENTH)*well.T*(prop.dt/prop.V(well.blockNum))*(well.BHP-pvarsn1(PRES))...
+%                 /((pvars(RHO)*pvars(ENTH)));
+%             Rnormed(well.blockNum) = Rnormed(well.blockNum) - well.Hinj*well.T*(prop.dt/prop.V(well.blockNum))*(well.BHP-pvarsn1(PRES))...
+%                 /((pvars(RHO)*pvars(ENTH)));
+%         end
     elseif strcmp(well.type,'rate')
         [pvars] = fluidProperties(xn(well.blockNum),xn(well.blockNum+prop.NB),prop);
         R(well.blockNum) = R(well.blockNum) - well.Hinj*well.rate*(prop.dt/prop.V)/((pvars(RHO)*pvars(ENTH)));
