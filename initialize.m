@@ -18,7 +18,7 @@ prop.V =prop.dx*prop.dy*prop.dz*ones(prop.NB,1);
 prop.Reps = 1e-5;
 prop.drho = 0.1;
 prop.dE = 10;
-prop.pinit = 1e6;
+prop.pinit = 8e6;
 prop.Swinit = 0.1;
 prop.hinit = h_pS(prop.pinit,prop.Swinit);
 prop.poro = 0.15;
@@ -33,10 +33,11 @@ well2.BHP = 1e6;
 well2.T =0 ;
 well2.blockNum = NB;
 well2.type = 'bhp';
-prop.wellList(1) = well;
+prop.wellList = {};
+%prop.wellList(1) = well;
 % no producer well
 %prop.wellList(2) = well2;
-prop.C_R = 0;
+prop.C_R = 4e6;
 for i = 1:prop.NB-1
     prop.connList(i,:) = [i,i+1];
 end

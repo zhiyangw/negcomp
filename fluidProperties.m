@@ -17,7 +17,14 @@ prop.rhodata.coeff =[1.00207; 4.42607; -5.47456; 5.02875; -1.24791; ...
 
 [ rhow_coeff,rhos_coeff,hw_coeff ,hs_coeff] = coeff_to_fun_coeff( prop.rhodata.coeff );
 coeff = prop.rhodata.coeff;
+
+g = 9.81;
+
+
 pvars(PRES) = pconv(p,prop);
+
+
+
 if strcmpi(prop.primaryVariable, 'S');
     pvars(ENTH) = h_pS(pvars(PRES),x2,coeff);
 else
